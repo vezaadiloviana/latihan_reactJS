@@ -7,9 +7,9 @@ const Home = () => {
   const [items, setItems] = useState('')
   const fetchData = async () => {
     try {
-        const response = await axios.get(`https://swapi.dev/api/people`)
-        setItems(response.data.results) 
-        console.log(response.data.results)     
+        const response = await axios.get(`https://ghibliapi.herokuapp.com/films`)
+        setItems(response.data) 
+        console.log(response.data)     
 
     } catch (error) {
     
@@ -34,12 +34,12 @@ const Home = () => {
             to={'/'}
             />
         </div> */}
-        <div className='flex flex-col items-center justify-center gap-5 py-10'>
+        <div className='flex flex-col px-10 gap-5 py-10'>
           {Object.values(items).map((data) => {
               return (
-                <Card key={data.height}
-                  cardTitle={data.name}
-                  to={'/'}
+                <Card key={data.id}
+                  cardTitle={data.title}
+                  to={'/home/detailfilm'}
                 />
               )})
               }
